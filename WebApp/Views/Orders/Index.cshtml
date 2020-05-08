@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WebApp.Models.Orders>
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Orders</h1>
+<table class="table" id="mytable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Productid)
+            </th>
+            <th>
+                ProductName
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Totalcost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordertime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orderstatus)
+            </th>
+            <th>
+                Delivery Status
+            </th>
+            <th>
+                Delivery Guy
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productid)
+            </td>
+            <td>
+                @foreach (Product p in (IEnumerable<Product>)ViewBag.productlist)
+                {
+                    @if (p.Id == item.Productid)
+                    {
+                        @p.Productname
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Totalcost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ordertime)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orderstatus)
+            </td>
+            <td>
+                @foreach (Shipmentagent3 p in (IEnumerable<Shipmentagent3>)ViewBag.sglist)
+                {
+                    @if (p.Orderid == item.Id)
+                    {
+                        @p.Statuss
+                    }
+                }
+            </td>
+            <td>
+                @foreach (Shipmentagent3 p in (IEnumerable<Shipmentagent3>)ViewBag.sglist)
+                {
+                    @if (p.Orderid == item.Id)
+                    {
+                        @p.DeliveryGuy
+                    }
+                }
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.Id">Make Payment</a>*@ 
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Cancel</a>*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
