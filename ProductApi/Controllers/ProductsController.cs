@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductApi.model;
+using ProductApi.Model;
 
 namespace ProductApi.Controllers
 {
@@ -14,25 +15,26 @@ namespace ProductApi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly shoppingdbContext _context;
+        private readonly IProductRepository _productRepository;
 
-        public ProductsController(shoppingdbContext context)
+        public ProductsController(IProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
         // GET: api/<controller>
         [HttpGet]
-        public ActionResult<IEnumerable> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
-            return  _context.Product.ToList();
+             return  _productRepository.GetAll();
+            
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public Product GetProducts(int id)
         {
-            Product p = _context.Product.Find(id);
+            Product p = _productRepository.GetOne(id);
             return p;
         }
 
@@ -41,8 +43,8 @@ namespace ProductApi.Controllers
         [HttpPost]
         public ActionResult PostProducts(Product products)
         {
-            _context.Product.Add(products);
-            _context.SaveChangesAsync();
+            _productRepository.Add(products);
+            _productRepository.SaveChanges();
             return Ok();
         }
 
@@ -51,7 +53,7 @@ namespace ProductApi.Controllers
         [HttpPut()]
         public IActionResult PutProducts(Product products)
         {
-            Product p = _context.Product.Find(products.Id);
+            Product p = _productRepository.GetOne(products);
 
             if (p != null)
             {
@@ -61,7 +63,7 @@ namespace ProductApi.Controllers
                 p.Imgurl = products.Imgurl;
                 p.Price = products.Price;
 
-                _context.SaveChanges();
+                _productRepository.SaveChanges();
             }
             else { 
                 return BadRequest();
@@ -75,21 +77,21 @@ namespace ProductApi.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteProducts(int id)
         {
-            var products = _context.Product.Find(id);
+            var products = _productRepository.GetOne(id);
             if (products == null)
             {
                 return NotFound();
             }
 
-            _context.Product.Remove(products);
-             _context.SaveChanges();
+            _productRepository.Remove(products);
+            _productRepository.SaveChanges();
 
             return Ok();
         }
 
-        private bool ProductsExists(int id)
+        /*private bool ProductsExists(int id)
         {
             return _context.Product.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

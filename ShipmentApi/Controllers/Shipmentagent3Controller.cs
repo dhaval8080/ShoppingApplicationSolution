@@ -13,25 +13,25 @@ namespace ShipmentApi.Controllers
     [ApiController]
     public class Shipmentagent3Controller : ControllerBase
     {
-        private readonly NewShoppingDbContext _context;
+        private readonly IShipmentRepository _shipmentRepository;
 
-        public Shipmentagent3Controller(NewShoppingDbContext context)
+        public Shipmentagent3Controller(IShipmentRepository shipmentRepository)
         {
-            _context = context;
+            _shipmentRepository = shipmentRepository;
         }
 
         // GET: api/Shipmentagent3
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shipmentagent3>>> GetShipmentagent3()
         {
-            return await _context.Shipmentagent3.ToListAsync();
+            return await _shipmentRepository.GetAll();
         }
 
         // GET: api/Shipmentagent3/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Shipmentagent3>> GetShipmentagent3(int id)
         {
-            var shipmentagent3 = await _context.Shipmentagent3.FindAsync(id);
+            var shipmentagent3 = await _shipmentRepository.GetOne(id);
 
             if (shipmentagent3 == null)
             {
@@ -48,7 +48,7 @@ namespace ShipmentApi.Controllers
         public IActionResult PutShipmentagent3(Shipmentagent3 shipmentagent3)
         {
 
-            Shipmentagent3 s =  _context.Shipmentagent3.Find(shipmentagent3.Id);
+            Shipmentagent3 s = _shipmentRepository.GetOne(shipmentagent3);
 
             if (s != null)
             {
@@ -56,7 +56,7 @@ namespace ShipmentApi.Controllers
                 s.Statuss = shipmentagent3.Statuss;
                 s.Orderid = shipmentagent3.Orderid;
 
-                 _context.SaveChanges();
+                _shipmentRepository.SaveChanges();
             }
             else
             {
@@ -71,8 +71,8 @@ namespace ShipmentApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Shipmentagent3>> PostShipmentagent3(Shipmentagent3 shipmentagent3)
         {
-            _context.Shipmentagent3.Add(shipmentagent3);
-            await _context.SaveChangesAsync();
+            _shipmentRepository.Add(shipmentagent3);
+            await _shipmentRepository.SaveChanges();
 
             return Ok();
         }
@@ -81,21 +81,21 @@ namespace ShipmentApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Shipmentagent3>> DeleteShipmentagent3(int id)
         {
-            var shipmentagent3 = await _context.Shipmentagent3.FindAsync(id);
+            var shipmentagent3 = await _shipmentRepository.GetOne(id);
             if (shipmentagent3 == null)
             {
                 return NotFound();
             }
 
-            _context.Shipmentagent3.Remove(shipmentagent3);
-            await _context.SaveChangesAsync();
+            _shipmentRepository.Remove(shipmentagent3);
+            await _shipmentRepository.SaveChanges();
 
             return Ok();
         }
 
-        private bool Shipmentagent3Exists(int id)
+        /*private bool Shipmentagent3Exists(int id)
         {
             return _context.Shipmentagent3.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

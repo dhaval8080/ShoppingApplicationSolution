@@ -262,7 +262,6 @@ E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplica
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.csprojAssemblyReference.cache
-E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.csproj.CoreCompileInputs.cache
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.AssemblyInfoInputs.cache
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.AssemblyInfo.cs
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.RazorTargetAssemblyInfo.cache
@@ -272,3 +271,4 @@ E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplica
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.dll
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.pdb
 E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.genruntimeconfig.cache
+E:\Dhaval\WebApiReferance\ShoppingApplicationSolution-master (1)\ShoppingApplicationSolution-master\ProductApi\obj\Release\netcoreapp3.1\ProductApi.csproj.CoreCompileInputs.cache
